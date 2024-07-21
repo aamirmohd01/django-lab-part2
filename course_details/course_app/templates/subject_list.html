@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Details of 6th Sem</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+        }
+        table {
+            width: 50%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        tr:nth-child(even) {
+            background-color: lightgreen;
+        }
+        .subject-name {
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <h1>Course Details of 6th Sem</h1>
+    <table>
+        <tr>
+            <th>Subject Code</th>
+            <th>Subject Name</th>
+        </tr>
+        <tr>
+            <td>21CS61</td>
+            <td class="subject-name">Software Engineering and Project Management</td>
+        </tr>
+        <tr>
+            <td>21CS62</td>
+            <td class="subject-name">Full Stack Development</td>
+        </tr>
+        <tr>
+            <td>21CS63</td>
+            <td class="subject-name">Software Testing</td>
+        </tr>
+        <tr>
+            <td>21CS641</td>
+            <td class="subject-name">Agile Technology</td>
+        </tr>
+        <tr>
+            <td>21CV654</td>
+            <td class="subject-name">Conservation of Natural Resources</td>
+        </tr>
+        <tr>
+            <td>21ISL66</td>
+            <td class="subject-name">Software Testing Laboratory</td>
+        </tr>
+        <tr>
+            <td>21ISMP67</td>
+            <td class="subject-name">Mini Project</td>
+        </tr>
+        <tr>
+            <td>21INT68</td>
+            <td class="subject-name">Innovation/Entrepreneurship/Societal Internship</td>
+        </tr>
+        {% for subject in subjects %}
+        <tr>
+            <td>{{ subject.subject_code }}</td>
+            <td class="subject-name">{{ subject.subject_name }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

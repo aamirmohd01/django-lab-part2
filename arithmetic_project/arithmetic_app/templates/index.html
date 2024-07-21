@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic Expression Evaluator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Arithmetic Expression Evaluator</h1>
+    <form id="expression-form">
+        <label for="expression">Enter expression:</label>
+        <input type="text" id="expression" name="expression" required>
+        <button type="submit">Evaluate</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        $(document).ready(function(){
+            $('#expression-form').on('submit', function(event){
+                event.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url "evaluate_expression" %}',
+                    data: {
+                        'expression': $('#expression').val(),
+                        'csrfmiddlewaretoken': '{{ csrf_token }}'
+                    },
+                    success: function(response){
+                        if(response.success) {
+                            $('#result').html('Result: ' + response.result);
+                        } else {
+                            $('#result').html('Error: ' + response.result);
+                        }
+                    },
+                    error: function(){
+                        $('#result').html('An error occurred.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
